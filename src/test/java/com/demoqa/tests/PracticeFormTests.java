@@ -33,7 +33,7 @@ public class PracticeFormTests {
         if(System.getProperty("remote").contentEquals("true")) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         } else {
-            Configuration.remote = null;
+            Configuration.remote = "https://localhost/3306";
         }
     }
     @Test
