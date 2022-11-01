@@ -32,8 +32,6 @@ public class PracticeFormTests {
         Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
         if(System.getProperty("remote").contentEquals("true")) {
             Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
-        } else {
-            Configuration.remote = "https://localhost/3306";
         }
     }
     @Test
