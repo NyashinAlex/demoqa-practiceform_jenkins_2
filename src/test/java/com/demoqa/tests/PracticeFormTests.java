@@ -16,24 +16,9 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class PracticeFormTests {
+public class PracticeFormTests extends TestBase {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
-    @BeforeAll
-    static void setUp() {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.browser = System.getProperty("browser", "chrome");
-        Configuration.browserVersion = System.getProperty("browser_version", "100.0");
-        Configuration.browserSize = System.getProperty("browser_size", "1920x1080");
-        if (System.getProperty("remote") != null) {
-            Configuration.remote = System.getProperty("remote");
-        }
-    }
     @Test
     void fillPracticeForm() {
 
@@ -43,7 +28,7 @@ public class PracticeFormTests {
                 .setUserEmail("nyashin@test.com")
                 .setGender("Male")
                 .setUserNumber("8905478547")
-                .setBirthDate("1996","July","07")
+                .setBirthDate("1996", "July", "07")
                 .setSubjects("Maths")
                 .setHobbies("Sports")
                 .uploadPicture("user.jpg")
@@ -53,8 +38,8 @@ public class PracticeFormTests {
                 .clickSubmitButton();
 
         practiceFormPage.checkVisible()
-                .checkTableElement("Student Name","Alex Nyashin")
-                .checkTableElement("Student Email","nyashin@test.com")
+                .checkTableElement("Student Name", "Alex Nyashin")
+                .checkTableElement("Student Email", "nyashin@test.com")
                 .checkTableElement("Gender", "Male")
                 .checkTableElement("Mobile", "8905478547")
                 .checkTableElement("Date of Birth", "07 July,1996")
@@ -65,6 +50,7 @@ public class PracticeFormTests {
                 .checkTableElement("State and City", "NCR Delhi");
 
     }
+
     @Test
     void fillMinPracticeForm() {
 
@@ -73,11 +59,11 @@ public class PracticeFormTests {
                 .setLastName("Nyashin")
                 .setGender("Male")
                 .setUserNumber("8905478547")
-                .setBirthDate("1996","July","07")
+                .setBirthDate("1996", "July", "07")
                 .clickSubmitButton();
 
         practiceFormPage.checkVisible()
-                .checkTableElement("Student Name","Alex Nyashin")
+                .checkTableElement("Student Name", "Alex Nyashin")
                 .checkTableElement("Gender", "Male")
                 .checkTableElement("Mobile", "8905478547")
                 .checkTableElement("Date of Birth", "07 July,1996");
